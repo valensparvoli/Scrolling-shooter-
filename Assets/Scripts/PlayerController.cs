@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float Speed;
-    public static float Score=0;
+    public static float Vida=100;
+    public Text UIvida;
+    public GameObject bullet;
+    public Transform firepoint;
 
     void Update()
     {
@@ -14,6 +19,18 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = new Vector2(x, y).normalized;
         Move(direction);
 
+        //Vida
+        UIvida.text = "Vida:" + Vida.ToString();
+        if (Vida <= 0)
+        {
+            SceneManager.LoadScene("Perdiste");
+        }
+
+        //Disparar
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
     }
 
     public void Move(Vector2 direction)
@@ -35,4 +52,10 @@ public class PlayerController : MonoBehaviour
 
         transform.position = pos;
     }
+    
+    void Shoot()
+    {
+        Instantiate(bullet, firepoint.position, firepoint.rotation);
+    }
+    
 }
