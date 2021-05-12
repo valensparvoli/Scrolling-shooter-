@@ -24,11 +24,9 @@ public class BossScript : MonoBehaviour
             Moverse();
             
         }
-        if (transform.position.y == 14)
-        {
-            meteoro1.SetActive(true);
-        }
        
     }
+
+
 
 }

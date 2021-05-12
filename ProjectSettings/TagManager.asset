@@ -8,6 +8,7 @@ TagManager:
   - BordeMeteoros
   - 'Power up '
   - win
+  - cuboIzquierdo
   layers:
   - Default
   - TransparentFX
