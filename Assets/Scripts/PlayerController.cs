@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float Speed;
+    public static float Speed=5;
     public static float Vida=100;
     public Text UIvida;
     public GameObject bullet;
@@ -53,9 +53,24 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
     }
     
-    void Shoot()
+    public void Shoot()
     {
         Instantiate(bullet, firepoint.position, firepoint.rotation);
     }
-    
+
+    public void TakeDamage(int damage)
+    {
+        Vida -= damage;
+        if (Vida <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene("Lose");
+    }
+
 }

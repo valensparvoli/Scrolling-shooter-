@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Borde
+  - BordeMeteoros
+  - 'Power up '
+  - win
   layers:
   - Default
   - TransparentFX

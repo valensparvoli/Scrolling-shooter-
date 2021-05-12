@@ -9,7 +9,24 @@ public class MeteoroScript : MonoBehaviour
 
     //Vida
     public int Health;
-  
+
+    //Colores
+    float rNaranja = 255f;
+    float gNaranja = 112f;
+    float bNaranja = 0;
+
+    void Update()
+    {
+        if (Health <= 75)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(rNaranja, gNaranja, bNaranja);
+        }
+        if (Health <= 25)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }   
+
     void FixedUpdate()
     {
         transform.position = transform.position + new Vector3(0, -Jumpv * Time.deltaTime, 0);
@@ -21,6 +38,10 @@ public class MeteoroScript : MonoBehaviour
         {
             Destroy(gameObject);
             PlayerController.Vida -= 15;
+        }
+        if (collision.collider.CompareTag("BordeMeteoros"))
+        {
+            Destroy(gameObject);
         }
     }
 
